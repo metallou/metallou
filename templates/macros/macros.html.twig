@@ -1,0 +1,7 @@
+{% macro dates(startDate, endDate, format = 'd/m/Y') %}
+  {% if endDate is null %}
+    <i>{{ startDate|date(format) }}</i>
+  {% else %}
+    <i>{{ startDate|date(format) }} - {{ endDate|date(format) }}</i>
+  {% endif %}
+{% endmacro dates %}

@@ -1,0 +1,263 @@
+{% extends 'base.html.twig' %}
+
+{% import 'macros/macros.html.twig' as macros %}
+
+{% set date_format = 'm/Y' %}
+
+{% block body %}
+<main
+  class="d-flex flex-row justify-content-around h-100 m-5"
+>
+  <div
+    class="d-flex flex-column justify-content-between w-100 mx-5"
+  >
+    <section
+      class="p-3 my-3 bg-dark text-white"
+    >
+    {% if not anonymous %}
+        <h2
+          class="text-center h2"
+        >{{ infos.firstName }} {{ infos.lastName }}</h2>
+    {% endif %}
+      <h1
+        class="text-center h1"
+      >Web Developper</h1>
+      <h3
+        class="text-center h3"
+      >(Full Stack)</h3>
+    </section>
+    {% if not anonymous %}
+      <section
+        class="p-3 my-3"
+      >
+        <h2
+          class="text-center h2 border-bottom border-dark"
+        >Informations</h2>
+        <ul
+          class="fa-ul"
+        >
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fas fa-user fa-2x"
+              ></i>
+            </span>
+            <span
+              class="ml-3"
+            >{{ infos.age }} ans, autonome, autodidacte, perfectionniste</span>
+          </li>
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fas fa-map-marker-alt fa-2x"
+              ></i>
+            </span>
+            <span
+              class="ml-3"
+            >{{ infos.address.street }}, {{ infos.address.postalCode }} {{ infos.address.city }}</span>
+          </li>
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fas fa-mobile fa-2x"
+              ></i>
+            </span>
+            <a
+              class="ml-3"
+              href="tel:{{ infos.phone }}"
+            >{{ infos.phone }}</a>
+          </li>
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fas fa-at fa-2x"
+              ></i>
+            </span>
+            <a
+              class="ml-3"
+              href="mailto:{{ infos.email }}"
+            >{{ infos.email }}</a>
+          </li>
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fab fa-linkedin fa-2x"
+              ></i>
+            </span>
+            <a
+              class="ml-3"
+              href="{{ infos.links.linkedin }}"
+              target="_blank"
+            >{{ infos.links.linkedin }}</a>
+          </li>
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fab fa-github fa-2x"
+              ></i>
+            </span>
+            <a
+              class="ml-3"
+              href="{{ infos.links.github }}"
+              target="_blank"
+            >{{ infos.links.github }}</a>
+          </li>
+          <li
+            class="my-3"
+          >
+            <span
+              class="fa-li"
+            >
+              <i
+                class="fas fa-home fa-2x"
+              ></i>
+            </span>
+            <a
+              class="ml-3"
+              href="{{ infos.links.portfolio }}"
+              target="_blank"
+            >{{ infos.links.portfolio }}</a>
+          </li>
+        </ul>
+      </section>
+    {% endif %}
+    <section
+      class="p-3 my-3 bg-dark text-white"
+    >
+      <h2
+        class="text-center h2 border-bottom border-light"
+      >Compétences</h2>
+      <ul
+        class="list-unstyled m-0"
+      >
+        {% for skill in infos.skills %}
+          <li>
+            <span>{{ skill }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <section
+      class="p-3 my-3"
+    >
+      <h2
+        class="text-center h2 border-bottom border-dark"
+      >Intérêts</h2>
+      <ul
+        class="list-unstyled m-0"
+      >
+        {% for interest in infos.interests %}
+          <li>
+            <span>{{ interest }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+  <div
+    class="d-flex flex-column justify-content-between w-100 mx-5"
+  >
+    <section
+      class="p-3 my-3"
+    >
+      <h2
+        class="text-center h2 border-bottom border-dark"
+      >Techniques</h2>
+      <dl
+        class="row"
+      >
+        {% for label, techs in infos.techs %}
+          <dt
+            class="col-2"
+          >{{ label }}</dt>
+          <dd
+            class="col-10"
+          >
+            {% for tech in techs %}
+              <p
+                class="m-0"
+              >{{ tech }}</p>
+            {% endfor %}
+          </dd>
+        {% endfor %}
+      </dl>
+    </section>
+    <section
+      class="p-3 my-3"
+    >
+      <h2
+        class="text-center h2 border-bottom border-dark"
+      >Expériences</h2>
+      <ul
+        class="list-unstyled m-0"
+      >
+        {% for experience in  experiences %}
+          <li>
+            <p
+              class="m-0"
+            >
+              <b>{{ experience.name }}</b>
+              <span>{{ experience.title }}</span>
+              <br />
+              {{ macros.dates(experience.startDate, experience.endDate, date_format) }}
+              <br />
+              <span>{{ experience.location }}</span>
+              <br />
+              <i>{{ experience.techs|join(' ') }}</i>
+            </p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <section
+      class="p-3 my-3"
+    >
+      <h2
+        class="text-center h2 border-bottom border-dark"
+      >Formations</h2>
+      <ul
+        class="list-unstyled m-0"
+      >
+        {% for study in studies %}
+          <li>
+            <p
+              class="m-0"
+            >
+              <b>{{ study.name }}</b>
+              <span>{{ study.title }}</span>
+              <br />
+              {{ macros.dates(study.startDate, study.endDate, date_format) }}
+              <br />
+              <span>{{ study.location }}</span>
+            </p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</main>
+{% endblock body %}

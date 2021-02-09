@@ -1,19 +1,19 @@
-index:
-  controller: 'App\Controller\HomeController::index'
+home:
+  controller: 'App\Controller\MainController::home'
   path: '/'
 
 experiences:
-  controller: 'App\Controller\HomeController::experiences'
+  controller: 'App\Controller\MainController::experiences'
   path: '/experiences'
 
 studies:
-  controller: 'App\Controller\HomeController::studies'
+  controller: 'App\Controller\MainController::studies'
   path: '/studies'
 
 projects:
-  controller: 'App\Controller\HomeController::studies'
+  controller: 'App\Controller\MainController::projects'
   path: '/projects'
 
 resume:
-  controller: 'App\Controller\HomeController::resume'
+  controller: 'App\Controller\MainController::resume'
   path: '/resume'

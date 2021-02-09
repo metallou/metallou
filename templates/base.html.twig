@@ -1,13 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html
+    lang="en"
+>
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta
+            charset="utf-8"
+        >
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        >
 
-        {% block javascripts %}{% endblock %}
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous"
+        >
+        <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.4.1/js/all.js"
+            integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
+            crossorigin="anonymous"
+        ></script>
+
+        <title>Kévin CASTEJON</title>
+
+        {% block head %}{% endblock head %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <header>
+                <nav
+                    class="navbar navbar-expand-lg navbar-dark bg-dark"
+                >
+                    <a
+                        class="navbar-brand"
+                        href="{{ path('home') }}"
+                    >Kévin CASTEJON</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbar"
+                        aria-controls="navbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span
+                            class="navbar-toggler-icon"
+                        ></span>
+                    </button>
+
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbar"
+                    >
+                        <ul class="navbar-nav mr-auto">
+                            <li
+                                class="nav-item"
+                            >
+                                <a
+                                    class="nav-link text-capitalize"
+                                    href="{{ path('home') }}"
+                                >présentation</a>
+                            </li>
+                            <li
+                                class="nav-item"
+                            >
+                                <a
+                                    class="nav-link text-capitalize"
+                                    href="{{ path('experiences') }}"
+                                >expériences</a>
+                            </li>
+                            <li
+                                class="nav-item"
+                            >
+                                <a
+                                    class="nav-link text-capitalize"
+                                    href="{{ path('studies') }}"
+                                >études</a>
+                            </li>
+                            <li
+                                class="nav-item"
+                            >
+                                <a
+                                    class="nav-link text-capitalize"
+                                    href="{{ path('projects') }}"
+                                >projets</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                {% block content %}{% endblock content %}
+            <main>
+        {% endblock body %}
     </body>
 </html>

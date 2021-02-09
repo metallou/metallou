@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<main
+  class="card-body container-fluid"
+>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xl-4 offset-xl-1 col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12"
+    >
+      <figure>
+        <img
+          class="img-fluid"
+          src="assets/images/photo.jpg"
+          alt="photo"
+        />
+        <figcaption>
+          <h2>{{ infos.firstName }} {{ infos.lastName }}</h2>
+        </figcaption>
+      </figure>
+    </div>
+    <div
+      class="col-xl-4 offset-xl-2 col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12"
+    >
+      <ul
+        class="fa-ul"
+      >
+        <li
+          class="my-3"
+        >
+          <span
+            class="fa-li"
+          >
+            <i
+              class="fas fa-user fa-2x"
+            ></i>
+          </span>
+          <span
+            class="ml-3"
+          >{{ infos.age }} ans</span>
+        </li>
+        <li
+          class="my-3"
+        >
+          <span
+            class="fa-li"
+          >
+            <i
+              class="fas fa-map-marker-alt fa-2x"
+            ></i>
+          </span>
+          <span
+            class="ml-3"
+          >{{ infos.address.city }}</span>
+        </li>
+        <li
+          class="my-3"
+        >
+          <span
+            class="fa-li"
+          >
+            <i
+              class="fas fa-at fa-2x"
+            ></i>
+          </span>
+          <a
+            class="ml-3"
+            href="mailto:{{ infos.email }}"
+          >{{ infos.email }}</a>
+        </li>
+        <li
+          class="my-3"
+        >
+          <span
+            class="fa-li"
+          >
+            <i
+            class="fab fa-linkedin fa-2x"
+            ></i>
+          </span>
+          <a
+            class="ml-3"
+            href="{{ infos.links.linkedin }}"
+            target="_blank"
+          >{{ infos.links.linkedin }}</a>
+        </li>
+        <li
+          class="my-3"
+        >
+          <span
+            class="fa-li"
+          >
+            <i
+              class="fab fa-github fa-2x"
+            ></i>
+          </span>
+          <a
+            class="ml-3"
+            href="{{ infos.links.github }}"
+            target="_blank"
+          >{{ infos.links.github }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+{% endblock content %}
