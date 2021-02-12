@@ -62,7 +62,7 @@
             </span>
             <span
               class="ml-3"
-            >{{ infos.address.street }}, {{ infos.address.postalCode }} {{ infos.address.city }}</span>
+            >{{ infos.location.street }}, {{ infos.location.postalCode }} {{ infos.location.city }}</span>
           </li>
           <li
             class="my-3"
@@ -223,7 +223,7 @@
               <b>{{ experience.name }}</b>
               <span>{{ experience.title }}</span>
               <br />
-              {{ macros.dates(experience.startDate, experience.endDate, date_format) }}
+              {{ macros.dates(experience.dateStart, experience.dateEnd, date_format) }}
               <br />
               <span>{{ experience.location }}</span>
               <br />
@@ -250,7 +250,7 @@
               <b>{{ study.name }}</b>
               <span>{{ study.title }}</span>
               <br />
-              {{ macros.dates(study.startDate, study.endDate, date_format) }}
+              {{ macros.dates(study.dateStart, study.dateEnd, date_format) }}
               <br />
               <span>{{ study.location }}</span>
             </p>

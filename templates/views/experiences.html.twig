@@ -29,7 +29,7 @@
                 </span>
                 <span
                     class="ml-3"
-                >{{ experience.location }}</span>
+                >{{ experience.location.street }}, {{ experience.location.postalCode }} {{ experience.location.city }}</span>
             </li>
             {% if experience.techs is not empty %}
             <li
@@ -57,12 +57,12 @@
                 <i
                     class="fas fa-calendar-alt fa-2x"
                 ></i>
-                <span>{{ experience.startDate|date(date_format) }}</span>
-                {% if experience.endDate is not null %}
+                <span>{{ experience.dateStart|date(date_format) }}</span>
+                {% if experience.dateEnd is not null %}
                     <i
                         class="fas fa-arrow-right fa-lg"
                     ></i>
-                    <span>{{ experience.endDate|date(date_format) }}</span>
+                    <span>{{ experience.dateEnd|date(date_format) }}</span>
                 {% endif %}
             </p>
         </div>

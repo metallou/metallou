@@ -1,7 +1,7 @@
-{% macro dates(startDate, endDate, format = 'd/m/Y') %}
-  {% if endDate is null %}
-    <i>{{ startDate|date(format) }}</i>
+{% macro dates(dateStart, dateEnd, format = 'd/m/Y') %}
+  {% if dateEnd is null %}
+    <i>{{ dateStart|date(format) }}</i>
   {% else %}
-    <i>{{ startDate|date(format) }} - {{ endDate|date(format) }}</i>
+    <i>{{ dateStart|date(format) }} - {{ dateEnd|date(format) }}</i>
   {% endif %}
 {% endmacro dates %}

@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use DateTime;
+use DateTimeImmutable;
+use DateTimeInterface;
+use JsonSerializable;
 
 /**
  * 
  */
-class Infos
+class Infos implements
+    JsonSerializable
 {
-    private Address $address;
+    private Location $location;
     private string $firstName = 'Kévin';
     private string $lastName = 'CASTEJON';
     private string $phone = '+3347493737';
     private string $email = 'kevincastejon13@gmail.com';
-    private DateTime $birthday;
+    private DateTimeInterface $birthday;
     private array $links = [
         'linkedin' => 'https://fr.linkedin.com/in/k%C3%A9vin-castejon-61925a134',
         'github' => 'https://github.com/metallou',
@@ -50,84 +53,123 @@ class Infos
         ],
     ];
 
-
     public function __construct()
     {
-        $this->address = new Address();
-        $this->birthday = new DateTime('1993-06-18');
+        $this->location = new Location(
+            '75 rue sauveur Tobelem',
+            '13007',
+            'Marseille',
+            'Bouches-du-Rhône',
+            "Provence-Alpes-Côte-d'Azur",
+            'FRANCE',
+        );
+        $this->birthday = new DateTimeImmutable('1993-06-18');
     }
 
     /**
      * 
      */
-    public function getAddress(): Address {
-        return $this->address;
+    public function getLocation(): Location
+    {
+        return $this->location;
     }
 
     /**
      * 
      */
-    public function getAge(): int {
-        $today = new DateTime();
+    public function getAge(): int
+    {
+        $today = new DateTimeImmutable();
 
         $diff = $this->birthday->diff($today);
 
         return $diff->y;
     }
-    
+
+    public function getBirthday(): DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
     /**
      * 
      */
-    public function getFirstName(): string {
+    public function getFirstName(): string
+    {
         return $this->firstName;
     }
 
     /**
      * 
      */
-    public function getLastName(): string {
+    public function getLastName(): string
+    {
         return $this->lastName;
     }
 
     /**
      * 
      */
-    public function getPhone(): string {
+    public function getPhone(): string
+    {
         return $this->phone;
     }
 
     /**
      * 
      */
-    public function getEmail(): string {
+    public function getEmail(): string
+    {
         return $this->email;
     }
 
     /**
      * 
      */
-    public function getLinks(): array {
+    public function getLinks(): array
+    {
         return $this->links;
     }
 
     /**
      * 
      */
-    public function getSkills(): array {
+    public function getSkills(): array
+    {
         return $this->skills;
     }
 
     /**
      * 
      */
-    public function getInterests(): array {
+    public function getInterests(): array
+    {
         return $this->interests;
     }
 
     /**
      * 
      */
-    public function getTechs(): array {
+    public function getTechs(): array
+    {
         return $this->techs;
+    }
+
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'location' => $this->location->jsonSerialize(),
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'age' => $this->getAge(),
+            'birthday' => $this->birthday->format('c'),
+            'links' => $this->links,
+            'skills' => $this->skills,
+            'interests' => $this->interests,
+            'techs' => $this->techs,
+        ];
     }
 }

@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\Experience;
 use App\Model\Infos;
-use DateTime;
+use App\Model\Location;
+use App\Model\Project;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,9 +56,9 @@ class MainController extends AbstractController
         $studies = $this->getStudies();
 
         return $this->render(
-            'views/studies.html.twig',
+            'views/experiences.html.twig',
             [
-                'studies' => $studies,
+                'experiences' => $studies,
             ],
         );
     }
@@ -66,7 +69,7 @@ class MainController extends AbstractController
     public function projects(): Response
     {
         $projects = $this->getProjects();
-       
+
         return $this->render(
             'views/projects.html.twig',
             [
@@ -80,8 +83,7 @@ class MainController extends AbstractController
      */
     public function resume(
         Request $request
-    ): Response
-    {
+    ): Response {
         $anonymous = $request->query->has('anonymous');
 
         $experiences = $this->getExperiences();
@@ -100,83 +102,181 @@ class MainController extends AbstractController
             ],
         );
     }
-    
-    private function getExperiences(): array {
+
+    private function getExperiences(): array
+    {
         return [
-            [
-                'name' => 'NAME1',
-                'title' => 'TITLE1',
-                'location' => 'LOCATION1',
-                'techs' => [
+            new Experience(
+                'NAME1',
+                'TITLE1',
+                new Location(
+                    'STREET1',
+                    'POSTAL_CODE1',
+                    'CITY1',
+                    'DEPARTMENT1',
+                    'REGION1',
+                    'COUNTRY1',
+                ),
+                'IMAGE1',
+                'URL1',
+                new DateTimeImmutable('first day of last year'),
+                new DateTimeImmutable('last day of last year'),
+                [
                     'tech1',
                     'tech2',
                     'tech3',
                 ],
-                'startDate' => new DateTime('first day of last year'),
-                'endDate' => new DateTime('last day of last year'),
-            ],
-            [
-                'name' => 'NAME3',
-                'title' => 'TITLE3',
-                'location' => 'LOCATION3',
-                'techs' => [],
-                'startDate' => new DateTime('first day of next year'),
-                'endDate' => null,
-            ],
-        ];
-    }
-
-    private function getStudies(): array {
-        return [
-            [
-                'name' => 'NAME1',
-                'title' => 'TITLE1',
-                'location' => 'LOCATION1',
-                'techs' => [
+            ),
+            new Experience(
+                'NAME2',
+                'TITLE2',
+                new Location(
+                    'STREET2',
+                    'POSTAL_CODE2',
+                    'CITY2',
+                    'DEPARTMENT2',
+                    'REGION2',
+                    'COUNTRY2',
+                ),
+                'IMAGE1',
+                'URL1',
+                new DateTimeImmutable('first day of last year'),
+                new DateTimeImmutable('last day of last year'),
+                [],
+            ),
+            new Experience(
+                'NAME3',
+                'TITLE3',
+                new Location(
+                    'STREET3',
+                    'POSTAL_CODE3',
+                    'CITY3',
+                    'DEPARTMENT3',
+                    'REGION3',
+                    'COUNTRY3',
+                ),
+                'IMAGE3',
+                'URL3',
+                new DateTimeImmutable('first day of last year'),
+                null,
+                [
                     'tech1',
                     'tech2',
                     'tech3',
                 ],
-                'startDate' => new DateTime('first day of last year'),
-                'endDate' => new DateTime('last day of last year'),
-            ],
-            [
-                'name' => 'NAME3',
-                'title' => 'TITLE3',
-                'location' => 'LOCATION3',
-                'techs' => [],
-                'startDate' => new DateTime('first day of next year'),
-                'endDate' => null,
-            ],
+            ),
         ];
     }
 
-    private function getProjects(): array {
+    private function getStudies(): array
+    {
         return [
-            [
-                'name' => 'NAME1',
-                'image' => 'IMAGE1',
-                'description' => 'DESCRIPTION1',
-                'techs' => [
+            new Experience(
+                'NAME1',
+                'TITLE1',
+                new Location(
+                    'STREET1',
+                    'POSTAL_CODE1',
+                    'CITY1',
+                    'DEPARTMENT1',
+                    'REGION1',
+                    'COUNTRY1',
+                ),
+                'IMAGE1',
+                'URL1',
+                new DateTimeImmutable('first day of last year'),
+                new DateTimeImmutable('last day of last year'),
+                [
                     'tech1',
                     'tech2',
                     'tech3',
                 ],
-                'github' => 'GITHUB1',
-                'url' => 'URL1',
-            ],
-            [
-                'name' => 'NAME2',
-                'image' => 'IMAGE2',
-                'description' => 'DESCRIPTION3',
-                'techs' => [],
-                'github' => null,
-                'url' => null,
-            ],
+            ),
+            new Experience(
+                'NAME2',
+                'TITLE2',
+                new Location(
+                    'STREET2',
+                    'POSTAL_CODE2',
+                    'CITY2',
+                    'DEPARTMENT2',
+                    'REGION2',
+                    'COUNTRY2',
+                ),
+                'IMAGE1',
+                'URL1',
+                new DateTimeImmutable('first day of last year'),
+                new DateTimeImmutable('last day of last year'),
+                [],
+            ),
+            new Experience(
+                'NAME3',
+                'TITLE3',
+                new Location(
+                    'STREET3',
+                    'POSTAL_CODE3',
+                    'CITY3',
+                    'DEPARTMENT3',
+                    'REGION3',
+                    'COUNTRY3',
+                ),
+                'IMAGE3',
+                'URL3',
+                new DateTimeImmutable('first day of last year'),
+                null,
+                [
+                    'tech1',
+                    'tech2',
+                    'tech3',
+                ],
+            ),
         ];
     }
 
-    private function getInfos(): Infos {
+    private function getProjects(): array
+    {
+        return [
+            new Project(
+                'NAME1',
+                'IMAGE1',
+                'DESCRIPTION1',
+                'GITHUB1',
+                'URL1',
+                [
+                    'tech1',
+                    'tech2',
+                    'tech3',
+                ],
+            ),
+            new Project(
+                'NAME2',
+                'IMAGE2',
+                'DESCRIPTION2',
+                'GITHUB2',
+                'URL2',
+                [
+                    'tech1',
+                    'tech2',
+                    'tech3',
+                ],
+            ),
+            new Project(
+                'NAME3',
+                'IMAGE3',
+                'DESCRIPTION3',
+                'GITHUB3',
+                'URL3',
+                [
+                    'tech1',
+                    'tech2',
+                    'tech3',
+                ],
+            ),
+        ];
+    }
+
+    private function getInfos(): Infos
+    {
         return new Infos();
     }
 }
