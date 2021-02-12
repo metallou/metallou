@@ -10,17 +10,15 @@ use JsonSerializable;
 /**
  * 
  */
-class Experience implements
+class ProjectModel implements
     JsonSerializable
 {
     public function __construct(
         private string $name,
-        private string $title,
-        private Location $location,
         private string $image,
+        private string $description,
+        private string $github,
         private string $url,
-        private DateTimeInterface $dateStart,
-        private DateTimeInterface|null $dateEnd,
         private array $techs,
     ) {
     }
@@ -36,22 +34,6 @@ class Experience implements
     /**
      * 
      */
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    /**
-     * 
-     */
-    public function getLocation(): Location
-    {
-        return $this->location;
-    }
-
-    /**
-     * 
-     */
     public function getImage(): string
     {
         return $this->image;
@@ -60,25 +42,25 @@ class Experience implements
     /**
      * 
      */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * 
+     */
+    public function getGithub(): string
+    {
+        return $this->github;
+    }
+
+    /**
+     * 
+     */
     public function getUrl(): string
     {
         return $this->url;
-    }
-
-    /**
-     * 
-     */
-    public function getDateStart(): DateTimeInterface
-    {
-        return $this->dateStart;
-    }
-
-    /**
-     * 
-     */
-    public function getDateEnd(): DateTimeInterface|null
-    {
-        return $this->dateEnd;
     }
 
     /**
@@ -93,14 +75,10 @@ class Experience implements
     {
         return [
             'name' => $this->name,
-            'title' => $this->title,
-            'location' => $this->location->jsonSerialize(),
             'image' => $this->image,
+            'description' => $this->description,
+            'github' => $this->github,
             'url' => $this->url,
-            'dateStart' => $this->dateStart->format('c'),
-            'dateEnd' => $this->dateEnd instanceof DateTimeInterface
-                ? $this->dateEnd->format('c')
-                : null,
             'techs' => $this->techs,
         ];
     }

@@ -11,10 +11,10 @@ use JsonSerializable;
 /**
  * 
  */
-class Infos implements
+class InfosModel implements
     JsonSerializable
 {
-    private Location $location;
+    private LocationModel $location;
     private string $firstName = 'Kévin';
     private string $lastName = 'CASTEJON';
     private string $phone = '+3347493737';
@@ -55,7 +55,7 @@ class Infos implements
 
     public function __construct()
     {
-        $this->location = new Location(
+        $this->location = new LocationModel(
             '75 rue sauveur Tobelem',
             '13007',
             'Marseille',
@@ -69,7 +69,7 @@ class Infos implements
     /**
      * 
      */
-    public function getLocation(): Location
+    public function getLocation(): LocationModel
     {
         return $this->location;
     }

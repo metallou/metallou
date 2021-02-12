@@ -9,7 +9,7 @@ use JsonSerializable;
 /**
  * 
  */
-class Location implements
+class LocationModel implements
     JsonSerializable
 {
     public function __construct(
