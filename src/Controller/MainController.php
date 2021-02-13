@@ -26,57 +26,18 @@ class MainController extends AbstractController
      */
     public function home(): Response
     {
-        $infos = $this->getInfos();
-
-        return $this->render(
-            'views/home.html.twig',
-            [
-                'infos' => $infos,
-            ],
-        );
-    }
-
-    /**
-     * 
-     */
-    public function experiences(): Response
-    {
         $experiences = $this->getExperiences();
-
-        return $this->render(
-            'views/experiences.html.twig',
-            [
-                'experiences' => $experiences,
-            ],
-        );
-    }
-
-    /**
-     * 
-     */
-    public function studies(): Response
-    {
         $studies = $this->getStudies();
-
-        return $this->render(
-            'views/experiences.html.twig',
-            [
-                'experiences' => $studies,
-            ],
-        );
-    }
-
-    /**
-     * 
-     */
-    public function projects(): Response
-    {
+        $infos = $this->getInfos();
         $projects = $this->getProjects();
 
         return $this->render(
-            'views/projects.html.twig',
+            'views/index.html.twig',
             [
+                'experiences' => $experiences,
+                'infos' => $infos,
                 'projects' => $projects,
+                'studies' => $studies,
             ],
         );
     }
@@ -90,9 +51,9 @@ class MainController extends AbstractController
         $anonymous = $request->query->has('anonymous');
 
         $experiences = $this->getExperiences();
+        $studies = $this->getStudies();
         $infos = $this->getInfos();
         $projects = $this->getProjects();
-        $studies = $this->getStudies();
 
         return $this->render(
             'views/resume.html.twig',

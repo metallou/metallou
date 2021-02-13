@@ -1,9 +1,11 @@
-{% extends 'base.html.twig' %}
+{% import 'macros/macros.html.twig' as macros %}
 
-{% block content %}
 <main
-  class="card-body container-fluid"
+  class="container-fluid d-flex justify-content-center align-items-center"
+  id="infos-container"
 >
+  {{ macros.anchor('infos') }}
+
   <div
     class="row"
   >
@@ -13,7 +15,7 @@
       <figure>
         <img
           class="img-fluid"
-          src="assets/images/photo.jpg"
+          src="assets/images/profile.jpg"
           alt="photo"
         />
         <figcaption>
@@ -106,4 +108,9 @@
     </div>
   </div>
 </main>
-{% endblock content %}
+
+<style>
+  #infos-container {
+    min-height: 100vh;
+  }
+</style>

@@ -1,0 +1,45 @@
+<nav
+    class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark"
+    id="nav"
+>
+    {% include 'includes/header/nav/brand.html.twig' %}
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar"
+        aria-controls="navbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span
+            class="navbar-toggler-icon"
+        ></span>
+    </button>
+
+    <div
+        class="collapse navbar-collapse"
+        id="navbar"
+    >
+        {% include 'includes/header/nav/navbar.html.twig' %}
+    </div>
+</nav>
+
+<script>
+    document.addEventListener(
+        'DOMContentLoaded',
+        () => {
+            const nav = document.getElementById('nav');
+            if (!(nav instanceof HTMLElement)) {
+                throw new Error(
+                    'not an element'
+                );
+            }
+
+            document.documentElement.style.setProperty(
+                '--nav-height',
+                nav.offsetHeight + "px"
+            );
+        }
+    );
+</script>

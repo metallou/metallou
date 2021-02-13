@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'includes/header.html.twig' %}
+    {% include 'includes/main.html.twig' %}
+    {% include 'includes/footer.html.twig' %}
+
+    <style>
+        .anchor-block {
+            position: relative;
+        }
+
+        .anchor {
+            position: absolute;
+            bottom: var(--nav-height);
+        }
+    </style>
+{% endblock body %}
