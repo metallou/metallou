@@ -13,30 +13,19 @@ use JsonSerializable;
 class ProjectModel implements
     JsonSerializable
 {
+    /**
+     * 
+     */
     public function __construct(
-        private string $name,
-        private string $image,
         private string $description,
-        private string $github,
-        private string $url,
-        private array $techs,
+        private string $homepage,
+        private string $image,
+        private bool $imageCustom,
+        private array $languages,
+        private string $name,
+        private string $repository,
+        private array $topics,
     ) {
-    }
-
-    /**
-     * 
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * 
-     */
-    public function getImage(): string
-    {
-        return $this->image;
     }
 
     /**
@@ -50,36 +39,73 @@ class ProjectModel implements
     /**
      * 
      */
-    public function getGithub(): string
+    public function getHomepage(): string
     {
-        return $this->github;
+        return $this->homepage;
     }
 
     /**
      * 
      */
-    public function getUrl(): string
+    public function getImage(): string
     {
-        return $this->url;
+        return $this->image;
     }
 
     /**
      * 
      */
-    public function getTechs(): array
+    public function isImageCustom(): bool
     {
-        return $this->techs;
+        return $this->imageCustom;
     }
 
+    /**
+     * 
+     */
+    public function getLanguages(): array
+    {
+        return $this->languages;
+    }
+
+    /**
+     * 
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * 
+     */
+    public function getRepository(): string
+    {
+        return $this->repository;
+    }
+
+    /**
+     * 
+     */
+    public function getTopics(): array
+    {
+        return $this->topics;
+    }
+
+    /**
+     * 
+     */
     public function jsonSerialize(): array
     {
         return [
-            'name' => $this->name,
-            'image' => $this->image,
             'description' => $this->description,
             'github' => $this->github,
-            'url' => $this->url,
-            'techs' => $this->techs,
+            'image' => $this->image,
+            'imageCustom' => $this->imageCustom,
+            'languages' => $this->languages,
+            'name' => $this->name,
+            'repository' => $this->repository,
+            'topics' => $this->topics,
         ];
     }
 }

@@ -22,25 +22,62 @@
             <header
               class="card-header bg-dark text-white h2"
             >{{ project.name }}</header>
-            <img
-              class="card-img-top"
-              src="assets/images/projects/{{ project.image }}"
-              alt="{{ project.name }}"
-            />
+            {% if project.imageCustom %}
+              <img
+                class="img-fluid"
+                src="{{ project.image }}"
+                alt="{{ project.name }}"
+              />
+            {% endif %}
             <div
               class="card-body"
             >
               <p>{{ project.description }}</p>
-              <div
-                class="card-text"
+              <table
+                class="table table-borderless table-sm"
               >
-                <i
-                  class="fas fa-cogs fa-2x"
-                ></i>
-                <i
-                  class="ml-1"
-                >{{ project.techs|join(' ') }}</i>
-              </div>
+                <tbody>
+                  {% for language in project.languages %}
+                    <tr>
+                      {% if loop.first %}
+                        <th
+                          rowspan="{{ project.languages|length }}"
+                        >
+                          <i
+                            class="fas fa-cogs"
+                          ></i>
+                          Languages
+                        </th>
+                      {% endif %}
+                      <td>
+                        <spa
+                          class="badge badge-pill"
+                          style="background-color: {{ language.color }}"
+                        n>{{ language.name }}</span>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  {% for topic in project.topics %}
+                    <tr>
+                      {% if loop.first %}
+                        <th
+                          rowspan="{{ project.topics|length }}"
+                        >
+                          <i
+                            class="fas fa-info-circle"
+                          ></i>
+                          Topics
+                        </th>
+                      {% endif %}
+                      <td>
+                        <span
+                          class="badge"
+                        >{{ topic }}</span>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
             <footer
               class="card-footer bg-transparent border-top-0 p-0 text-right"
@@ -50,22 +87,22 @@
               >
                 <a
                   class="btn btn-dark rounded"
-                  href="{{ project.github }}"
+                  href="{{ project.homepage }}"
                   target="_blank"
-                  class="{{ project.github is null ? 'invisible' : '' }} mr-4"
+                  class="{{ project.homepage is null ? 'invisible' : '' }} mr-4"
                 >
                   <i
-                    class="fab fa-github fa-3x text-white"
+                    class="fas fa-globe fa-3x text-white"
                   ></i>
                 </a>
                 <a
                   class="btn btn-dark rounded"
-                  href="{{ project.url }}"
+                  href="{{ project.repository }}"
                   target="_blank"
                   class="ml-4"
                 >
                   <i
-                    class="fas fa-globe fa-3x text-white"
+                    class="fab fa-github fa-3x text-white"
                   ></i>
                 </a>
               </div>
