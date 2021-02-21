@@ -1,111 +1,104 @@
 {% import 'macros/macros.html.twig' as macros %}
 
 <main
-  class="container-fluid d-flex justify-content-center align-items-center"
   id="infos-container"
 >
   {{ macros.anchor('infos') }}
 
   <div
-    class="row"
+    class="d-flex flex-column flex-md-row justify-content-center"
   >
-    <div
-      class="col-xl-4 offset-xl-1 col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12"
+    <figure
+      class="col-auto col-md-6"
     >
-      <figure>
-        <img
-          class="img-fluid"
-          src="assets/images/profile.jpg"
-          alt="photo"
-        />
-        <figcaption>
-          <h2>{{ infos.firstName }} {{ infos.lastName }}</h2>
-        </figcaption>
-      </figure>
-    </div>
-    <div
-      class="col-xl-4 offset-xl-2 col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12"
+      <img
+        class="img-fluid"
+        src="assets/images/profile.jpg"
+        alt="photo"
+      />
+      <figcaption>
+        <h2>{{ infos.firstName }} {{ infos.lastName }}</h2>
+      </figcaption>
+    </figure>
+    <ul
+      class="col-auto fa-ul mt-3 mt-md-0"
     >
-      <ul
-        class="fa-ul"
+      <li
+        class="mt-3"
       >
-        <li
-          class="my-3"
+        <span
+          class="fa-li"
         >
-          <span
-            class="fa-li"
-          >
-            <i
-              class="fas fa-user fa-2x"
-            ></i>
-          </span>
-          <span
-            class="ml-3"
-          >{{ infos.age }} ans</span>
-        </li>
-        <li
-          class="my-3"
+          <i
+            class="fas fa-user fa-2x"
+          ></i>
+        </span>
+        <span
+          class="ml-3"
+        >{{ infos.age }} ans</span>
+      </li>
+      <li
+        class="my-3"
+      >
+        <span
+          class="fa-li"
         >
-          <span
-            class="fa-li"
-          >
-            <i
-              class="fas fa-map-marker-alt fa-2x"
-            ></i>
-          </span>
-          <span
-            class="ml-3"
-          >{{ infos.location.city }}</span>
-        </li>
-        <li
-          class="my-3"
+          <i
+            class="fas fa-map-marker-alt fa-2x"
+          ></i>
+        </span>
+        <span
+          class="ml-3"
+        >{{ infos.location.city }}</span>
+      </li>
+      <li
+        class="my-3"
+      >
+        <span
+          class="fa-li"
         >
-          <span
-            class="fa-li"
-          >
-            <i
-              class="fas fa-at fa-2x"
-            ></i>
-          </span>
-          <a
-            class="ml-3"
-            href="mailto:{{ infos.email }}"
-          >{{ infos.email }}</a>
-        </li>
-        <li
-          class="my-3"
+          <i
+            class="fas fa-at fa-2x"
+          ></i>
+        </span>
+        <a
+          class="ml-3"
+          href="mailto:{{ infos.email }}"
+        >{{ infos.email }}</a>
+      </li>
+      <li
+        class="my-3"
+      >
+        <span
+          class="fa-li"
         >
-          <span
-            class="fa-li"
-          >
-            <i
-            class="fab fa-linkedin fa-2x"
-            ></i>
-          </span>
-          <a
-            class="ml-3"
-            href="{{ infos.links.linkedin }}"
-            target="_blank"
-          >{{ infos.links.linkedin }}</a>
-        </li>
-        <li
-          class="my-3"
+          <i
+          class="fab fa-linkedin fa-2x"
+          ></i>
+        </span>
+        <a
+          class="ml-3"
+          href="{{ infos.links.linkedin }}"
+          target="_blank"
+        >{{ infos.links.linkedin }}</a>
+      </li>
+      <li
+        class="my-3"
+      >
+        <span
+          class="fa-li"
         >
-          <span
-            class="fa-li"
-          >
-            <i
-              class="fab fa-github fa-2x"
-            ></i>
-          </span>
-          <a
-            class="ml-3"
-            href="{{ infos.links.github }}"
-            target="_blank"
-          >{{ infos.links.github }}</a>
-        </li>
-      </ul>
-    </div>
+          <i
+            class="fab fa-github fa-2x"
+          ></i>
+        </span>
+        <a
+          class="ml-3"
+          href="{{ infos.links.github }}"
+          target="_blank"
+        >{{ infos.links.github }}</a>
+      </li>
+    </ul>
   </div>
 </main>
 

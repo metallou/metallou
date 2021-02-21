@@ -10,21 +10,18 @@
   >projets</h2>
   
   <section
-    class="card-body container-fluid"
+    class="row"
   >
-    <div
-      class="row"
-    >
       {% for project in projects %}
-        <article
-          class="col-xl-3 col-lg-4 col-md-6 offset-md-0 col-sm-10 offset-sm-1 col-12 offset-0 d-flex"
+        <div
+          class="col-12 col-md-6 my-3"
         >
-          <div
-            class="card border border-secondary rounded mx-2 my-3 flex-fill
+          <article
+            class="card border rounded"
           >
-            <div
+            <header
               class="card-header bg-dark text-white h2"
-            >{{ project.name }}</div>
+            >{{ project.name }}</header>
             <img
               class="card-img-top"
               src="assets/images/projects/{{ project.image }}"
@@ -33,9 +30,7 @@
             <div
               class="card-body"
             >
-              <div
-                class="card-title font-weight-bold"
-              >{{ project.description }}</div>
+              <p>{{ project.description }}</p>
               <div
                 class="card-text"
               >
@@ -47,31 +42,38 @@
                 >{{ project.techs|join(' ') }}</i>
               </div>
             </div>
-            <div
-              class="card-footer bg-dark text-center text-nowrap"
+            <footer
+              class="card-footer bg-transparent border-top-0 p-0 text-right"
             >
-              <a
-                href="{{ project.github }}"
-                target="_blank"
-                class="{{ project.github is null ? 'invisible' : '' }} mr-4"
+              <div
+                class="btn-toolbar d-inline-block"
               >
-                <i
-                  class="fab fa-github fa-3x text-white"
-                ></i>
-              </a>
-              <a
-                href="{{ project.url }}"
-                target="_blank"
-                class="ml-4"
-              >
-                <i
-                  class="fas fa-globe fa-3x text-white"
-                ></i>
-              </a>
-            </div>
+                <a
+                  class="btn btn-dark rounded"
+                  href="{{ project.github }}"
+                  target="_blank"
+                  class="{{ project.github is null ? 'invisible' : '' }} mr-4"
+                >
+                  <i
+                    class="fab fa-github fa-3x text-white"
+                  ></i>
+                </a>
+                <a
+                  class="btn btn-dark rounded"
+                  href="{{ project.url }}"
+                  target="_blank"
+                  class="ml-4"
+                >
+                  <i
+                    class="fas fa-globe fa-3x text-white"
+                  ></i>
+                </a>
+              </div>
+            </footer>
           </div>
         </article>
-      {% endfor %}
-    </div>
-  </section>
+      </div>
+    {% endfor %}
+  </div>
+</section>
 </aside>
